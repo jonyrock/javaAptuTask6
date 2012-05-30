@@ -1,39 +1,32 @@
 package ru.spbau.valikiy.task6;
 
-import java.io.*;
+import java.io.FileWriter;
 import java.lang.reflect.Method;
+import java.util.Properties;
 
 public class ReflectionSerializer {
 
     <T> void serialize(T t, String filename) throws Exception {
 
-        BufferedWriter ostr = new BufferedWriter(new FileWriter(filename));
-        
-        try {
-            
-            Class<?> cls = t.getClass();
+        Properties properties = new Properties();
 
-            Method methods[] = cls.getDeclaredMethods();
-            for (Method m : methods) {
+        Class<?> cls = t.getClass();
 
-                String name = m.getName();
-                if (!name.startsWith("get") || name.length() == 3) {
-                    continue;
-                }
+        Method methods[] = cls.getDeclaredMethods();
+        for (Method m : methods) {
 
-                String propertyName = Character.toLowerCase(name.charAt(3)) + name.substring(4);
-                Object value = m.invoke(t);
-                ostr.write(propertyName + "=" + value);
-                ostr.newLine();
-
+            String name = m.getName();
+            if (!name.startsWith("get") || name.length() == 3) {
+                continue;
             }
 
-        } catch (Exception e) {
-            ostr.close();
-            throw e;
+            String propertyName = Character.toLowerCase(name.charAt(3)) + name.substring(4);
+            Object value = m.invoke(t);
+            properties.setProperty(propertyName, value.toString());
+
         }
-        
-        ostr.close();
+
+        properties.store(new FileWriter(filename), "");
 
     }
 

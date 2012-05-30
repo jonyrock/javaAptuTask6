@@ -1,6 +1,6 @@
 package ru.spbau.valikiy.task6;
 
-public class Student {
+public class StudentBean {
 
     String name;
     String surname;

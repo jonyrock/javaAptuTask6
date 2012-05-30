@@ -15,7 +15,7 @@ public class Main {
     public static void runCheat() throws Exception {
 
         ReflectionSerializer s = new ReflectionSerializer();
-        Student st = new Student();
+        StudentBean st = new StudentBean();
         st.setAge(10);
         st.setSurname("Nurk");
         st.setName("Anton");

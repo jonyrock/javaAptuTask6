@@ -21,6 +21,9 @@ public class Main {
         st.setName("Anton");
         st.setAvgGrade(3.8);
         s.serialize(st, "tests/AntonNurk.properties");
+        
+        ReflectionDeSerializer d = new ReflectionDeSerializer();
+        d.deserialize("tests/AntonNurk.properties", StudentBean.class);
 
     }
 

@@ -1,8 +1,5 @@
 
 *** BUGS ***
--- cоздать класс RefectionSerializer, имеющий метод void serialize(T t, String filename),
-осуществляющий сериализацию объекта типа T в файл
-
 -- cоздать класс RefectionDeSerializer, имеющий метод void deserialize(String filename, Class<T> clazz), 
 осуществляющий десериализацию объекта типа T из файла
 
@@ -11,6 +8,9 @@
    (но не выше 5.0) и сериализует обратно в тот же файл.
 
 *** DONE ***
+-- cоздать класс RefectionSerializer, имеющий метод void serialize(T t, String filename),
+осуществляющий сериализацию объекта типа T в файл
+
 -- создать класс Student, содержащий следующие "свойства" 
 (не путать с полями), доступные и на чтение и на запись:
     String name

@@ -32,7 +32,8 @@ public class ReflectionSerializer {
             ostr.close();
             throw e;
         }
-
+        
+        ostr.close();
 
     }
 

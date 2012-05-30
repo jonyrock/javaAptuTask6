@@ -11,9 +11,10 @@ public class ReflectionSerializer {
 
     /**
      * Write some object to file
-     * @param t object
+     *
+     * @param t        object
      * @param filename file target
-     * @param <T> class type
+     * @param <T>      class type
      * @throws Exception if something wrong
      */
     <T> void serialize(T t, String filename) throws Exception {
@@ -32,7 +33,9 @@ public class ReflectionSerializer {
 
             String propertyName = Character.toLowerCase(name.charAt(3)) + name.substring(4);
             Object value = m.invoke(t);
-            properties.setProperty(propertyName, value.toString());
+            if (value != null) {
+                properties.setProperty(propertyName, value.toString());
+            }
 
         }
 

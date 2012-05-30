@@ -49,7 +49,7 @@ public class ReflectionDeSerializer {
                 }
             });
 
-            if (res == -1) {
+            if (res < 0) {
                 continue;
             }
 

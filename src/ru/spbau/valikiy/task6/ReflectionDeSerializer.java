@@ -7,9 +7,20 @@ import java.util.Comparator;
 import java.util.Properties;
 import java.util.Set;
 
+/**
+ * Basic reflection DeSerializer
+ */
 public class ReflectionDeSerializer {
 
-    <T> T deserialize(String filename, Class<T> cls) throws Exception {
+    /**
+     * Get some object by reflection
+     * @param filename source file
+     * @param cls new object class
+     * @param <T> class type
+     * @return new object
+     * @throws Exception if something wrong
+     */
+    public <T> T deserialize(String filename, Class<T> cls) throws Exception {
 
         Object o = cls.getConstructors()[0].newInstance();
 
@@ -44,7 +55,7 @@ public class ReflectionDeSerializer {
 
             String value = properties.getProperty(name);
             Method m = methods[res];
-            
+
             Class<?> cl = m.getParameterTypes()[0];
             m.invoke(o, parseStringValue(value, cl));
 
@@ -54,18 +65,43 @@ public class ReflectionDeSerializer {
 
     }
 
+    /**
+     * Convert string to object by class name
+     * @param str for convert
+     * @param cls class 
+     * @param <T> class type
+     * @return parsed string
+     */
     static <T> Object parseStringValue(String str, Class<T> cls) {
-        if(cls.getName().toLowerCase().equals("double")){
+        if (cls.getName().toLowerCase().equals("double")) {
             return Double.parseDouble(str);
         }
-        if(cls.getName().toLowerCase().equals("integer")){
+        if (cls.getName().toLowerCase().equals("integer")) {
             return Integer.parseInt(str);
         }
-        if(cls.getName().toLowerCase().equals("int")){
+        if (cls.getName().toLowerCase().equals("int")) {
             return Integer.parseInt(str);
         }
-        if(cls.getName().toLowerCase().equals("float")){
-            return Integer.parseInt(str);
+        if (cls.getName().toLowerCase().equals("float")) {
+            return Float.parseFloat(str);
+        }
+        if (cls.getName().toLowerCase().equals("char")) {
+            return str.charAt(0);
+        }
+        if (cls.getName().toLowerCase().equals("Character")) {
+            return str.charAt(0);
+        }
+        if (cls.getName().toLowerCase().equals("boolean")) {
+            return Boolean.parseBoolean(str);
+        }
+        if (cls.getName().toLowerCase().equals("long")) {
+            return Long.parseLong(str);
+        }
+        if (cls.getName().toLowerCase().equals("short")) {
+            return Short.parseShort(str);
+        }
+        if (cls.getName().toLowerCase().equals("byte")) {
+            return Byte.parseByte(str);
         }
         return str;
     }

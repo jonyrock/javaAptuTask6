@@ -1,17 +1,16 @@
-
 *** BUGS ***
--- JavaDoc
 
+*** DONE ***
+-- Пофиксить типы в ReflectionDeSerializer.parseStringValue()
+-- JavaDoc
 -- cоздать класс RefectionDeSerializer, имеющий метод void deserialize(String filename, Class<T> clazz), 
 осуществляющий десериализацию объекта типа T из файла
+-- cоздать класс RefectionSerializer, имеющий метод void serialize(T t, String filename),
+осуществляющий сериализацию объекта типа T в файл
 
 -- Main должен "жульничать" со средним баллом: аргументом передается .properties файл
    Программа десериализует этого студента, увеличивает его средний балл на 1.0 
    (но не выше 5.0) и сериализует обратно в тот же файл.
-
-*** DONE ***
--- cоздать класс RefectionSerializer, имеющий метод void serialize(T t, String filename),
-осуществляющий сериализацию объекта типа T в файл
 
 -- создать класс Student, содержащий следующие "свойства" 
 (не путать с полями), доступные и на чтение и на запись:

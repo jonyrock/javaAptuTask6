@@ -1,32 +1,55 @@
 package ru.spbau.valikiy.task6;
 
+/**
+ * Start class
+ */
 public class Main {
 
+    /**
+     * Start point
+     * @param args filename to update avgGrade or nothing to create example 
+     */
     public static void main(String[] args) {
 
         try {
-            runCheat();
+            if (args.length == 0) {
+                runNewExample();
+            } else {
+                runCheat(args[0]);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
 
-    public static void runCheat() throws Exception {
-
+    /**
+     * Generate example
+     * @throws Exception if something wrong
+     */
+    public static void runNewExample() throws Exception {
         ReflectionSerializer s = new ReflectionSerializer();
         StudentBean st = new StudentBean();
-        st.setAge(10);
-        st.setSurname("Nurk");
-        st.setName("Anton");
-        st.setAvgGrade(3.8);
-        s.serialize(st, "tests/AntonNurk.properties");
+        st.setAge(21);
+        st.setSurname("Velikiy");
+        st.setName("Alexey");
+        st.setAvgGrade(2.8);
+        s.serialize(st, "AlexeyVelikiy.properties");
+    }
+
+    /**
+     * Update avgGrade in file
+     * @param filename to read
+     * @throws Exception if something wrong
+     */
+    public static void runCheat(String filename) throws Exception {
 
         ReflectionDeSerializer d = new ReflectionDeSerializer();
+        StudentBean sn = d.deserialize(filename, StudentBean.class);
+        sn.avgGrade = Math.min(5.0, sn.avgGrade + 1.0);
 
-        StudentBean sn = d.deserialize("tests/AntonNurk.properties", StudentBean.class);
-        
-        System.out.println(sn.age);
+        ReflectionSerializer s = new ReflectionSerializer();
+        s.serialize(sn, filename);
 
     }
 

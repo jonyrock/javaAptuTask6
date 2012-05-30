@@ -1,5 +1,8 @@
 package ru.spbau.valikiy.task6;
 
+/**
+ * Test class for serialisation
+ */
 public class StudentBean {
 
     String name;

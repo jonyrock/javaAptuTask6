@@ -1,4 +1,4 @@
-package ru.spbau.valikiy.task6.task6;
+package ru.spbau.valikiy.task6;
 
 /**
  * Start class

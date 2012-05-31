@@ -1,4 +1,4 @@
-package ru.spbau.valikiy.task6.task5;
+package ru.spbau.valikiy.task5;
 
 import java.util.Calendar;
 

@@ -1,4 +1,4 @@
-package ru.spbau.valikiy.task6.task6;
+package ru.spbau.valikiy.task6;
 
 import java.io.FileReader;
 import java.lang.reflect.Method;

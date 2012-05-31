@@ -33,7 +33,8 @@ public class Main {
         st.setAge(21);
         st.setSurname("Velikiy");
         st.setName("Alexey");
-        st.setAvgGrade(2.8);
+        st.setAvgGrade(2.1);
+        st.setClassName('A');
         s.serialize(st, "AlexeyVelikiy.properties");
     }
 

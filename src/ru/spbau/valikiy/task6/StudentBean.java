@@ -9,6 +9,7 @@ public class StudentBean {
     String surname;
     int age;
     double avgGrade;
+    char className;
 
     public void setName(String name) {
         this.name = name;
@@ -41,5 +42,18 @@ public class StudentBean {
     public String getName(){
         return name;
     }
+    
+    public char getClassName(){
+        return className;
+    }
+    
+    public void setClassName(char value){
+        className = value;
+    }
+
+    public Character getClassNameAgain(){
+        return className;
+    }
+
     
 }

@@ -7,17 +7,23 @@ public abstract class Event {
 
     List<ActionListener> listeners = new ArrayList<ActionListener>();
 
-    abstract boolean ready();
+    public abstract boolean ready();
 
-    void fireEvent() {
-        if (!ready())
-            return;
+    public void fireEvent() {
         for (ActionListener listener : listeners) {
             listener.performAction();
         }
     }
 
-    void addListener(ActionListener actionListener) {
+    public void addListener(ActionListener actionListener) {
         listeners.add(actionListener);
     }
+
+    public void checkState() {
+        if (ready()) {
+            fireEvent();
+        }
+    }
+
+
 }

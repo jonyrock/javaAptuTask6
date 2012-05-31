@@ -18,12 +18,20 @@ public class Main {
         addAnonymous();
         add5msg();
 
-        for (int i = 0; i < 15; i++) {
-            randomEvent.checkState();
+        while (true) {
+            if (timeEvent.ready()) {
+                timeEvent.fireEvent();
+            }
+            if (randomEvent.ready()) {
+                randomEvent.fireEvent();
+            }
         }
 
     }
 
+    /**
+     * Adds anonymous handlers
+     */
     static void addAnonymous() {
         timeEvent.addListener(new ActionListener() {
             public void performAction() {
@@ -51,6 +59,9 @@ public class Main {
 
     }
 
+    /**
+     * Adds StringListener
+     */
     static void add5msg() {
         for (int i = 0; i < 5; i++) {
             timeEvent.addListener(new StringListener("TimeEvent #" + i));
